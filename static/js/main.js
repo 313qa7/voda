@@ -101,12 +101,15 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="telegram-contact">
                 <div class="contact-header">
-                    <i class="bi bi-telegram"></i>
                     <h4>تواصل معنا لإتمام الطلب</h4>
                 </div>
                 <a href="https://t.me/voda2468" target="_blank" class="telegram-btn">
                     <i class="bi bi-telegram me-2"></i>
                     تواصل عبر التليجرام
+                </a>
+                <a href="https://wa.me/201006311569?text=السلام عليكم، شحن رصيد فودافون بقيمة ${netBalance} جنيه بسعر ${totalBot} جنيه" target="_blank" class="whatsapp-btn">
+                    <i class="bi bi-whatsapp me-2"></i>
+                    تواصل عبر الواتساب
                 </a>
                 <p class="contact-note">اضغط على الرابط وابعت تفاصيل طلبك</p>
             </div>
@@ -157,7 +160,7 @@ function addInteractiveEffects() {
     });
 
     // تأثير النقر للأزرار
-    const buttons = document.querySelectorAll('.balance-button, .telegram-btn');
+    const buttons = document.querySelectorAll('.balance-button, .telegram-btn, .whatsapp-btn');
     buttons.forEach(button => {
         button.addEventListener('click', function() {
             this.style.transform = 'scale(0.98)';
