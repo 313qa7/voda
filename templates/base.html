@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#28a745">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="application-name" content="VF - NoTAX">
+    <meta name="apple-mobile-web-app-title" content="VF - NoTAX">
+
+    <title>{% block title %}خلي تجديد الباقة علينا 😉 - اشحن رصيدك بأرخص سعر{% endblock %}</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% block description %}خدمة شحن رصيد فودافون بأقل تكلفة - وفر 21% من قيمة الرصيد مع خدمة شحن سريعة وآمنة على مدار الساعة. رصيد صافي بدون ضريبة.{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}شحن رصيد, فودافون, توفير, رصيد فودافون, شحن رصيد بخصم, شحن رصيد مصر, شحن فودافون, خصم على الرصيد, رصيد صافي, بدون ضريبة, ضريبة الرصيد, شحن رصيد فودافون, رصيد فودافون بخصم, شحن رصيد بدون ضريبة, شحن رصيد فودافون بدون ضريبة, شحن رصيد فودافون بخصم{% endblock %}">
+    <meta name="author" content="VF - NoTAX">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" as="style">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile.css') }}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Prayer Banner -->
+    <div class="prayer-banner text-center py-2 mb-2">
+        <h5 class="mb-0 animate__animated animate__flash animate__infinite animate__slow">
+            <i class="bi bi-star-fill text-warning me-2"></i>
+            كسبان اللي يوحد الله و يصلي على النبي
+            <i class="bi bi-star-fill text-warning ms-2"></i>
+        </h5>
+    </div>
+
+    <!-- Developer Credit Banner -->
+    <div class="developer-banner text-center py-2 mb-2">
+        <div class="developer-content animate__animated animate__fadeIn">
+            <i class="bi bi-code-slash text-white me-2"></i>
+            <span>الموقع عمله</span>
+            <span class="developer-name ms-1 me-1">
+                <span>Abdallah AlKhateb</span>
+            </span>
+            <i class="bi bi-code-slash text-white ms-2"></i>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Page Header -->
+        <div class="header">
+            <h1>{% block page_title %}خلي تجديد الباقة علينا 😉{% endblock %}</h1>
+            <p>{% block page_subtitle %}اشحن رصيدك بأرخص سعر{% endblock %}</p>
+        </div>
+
+        <!-- Main Content Block -->
+        {% block content %}{% endblock %}
+
+        <!-- Warning Alert -->
+        {% block warning_alert %}
+        <div class="alert alert-danger text-center mb-4">
+            <h4 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i>خلي بالك</h4>
+            <p class="mb-0"><strong>الخدمة دي لأرقام فودافون بس</strong></p>
+        </div>
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    {% block footer %}
+    <footer class="text-center py-3 mt-4" style="background: rgba(0,0,0,0.3); color: #888;">
+        <div class="container">
+            <p class="mb-0">جميع الحقوق محفوظة.</p>
+            <p class="mb-0">تم التطوير بواسطة <strong>Abdallah AlKhateb</strong></p>
+        </div>
+    </footer>
+    {% endblock %}
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

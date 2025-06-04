@@ -1,0 +1,368 @@
+/* ملف أنماط الموبايل لموقع VF - NoTAX */
+
+/* تحسينات شاملة للأجهزة المحمولة */
+@media (max-width: 576px) {
+    /* إعدادات الجسم الأساسية */
+    body {
+        font-size: 18px;
+        overflow-x: hidden;
+        padding: 0;
+        margin: 0;
+        line-height: 1.6;
+    }
+    
+    /* الحاوية الرئيسية */
+    .container {
+        margin: 10px auto;
+        padding: 25px;
+        max-width: 98%;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    }
+    
+    /* الرأس */
+    .header {
+        margin-bottom: 30px;
+        text-align: center;
+        padding: 0 10px;
+    }
+    
+    .header h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        line-height: 1.3;
+        padding: 0 5px;
+    }
+    
+    .header p {
+        font-size: 20px;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+    
+    /* بطاقات الرصيد */
+    .balance-card {
+        margin-bottom: 30px;
+        padding: 30px 25px;
+        transform: scale(1);
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    }
+    
+    .balance-card:hover {
+        transform: scale(1.02);
+    }
+    
+    .balance-title {
+        font-size: 26px;
+        margin-bottom: 30px;
+        text-align: center;
+        line-height: 1.4;
+        padding: 0 10px;
+    }
+    
+    .balance-label {
+        font-size: 20px;
+        margin-bottom: 15px;
+        text-align: center;
+        display: block;
+        width: 100%;
+        font-weight: 600;
+    }
+
+    .balance-input {
+        height: 60px;
+        font-size: 22px;
+        padding: 18px 25px;
+        width: 100%;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .balance-button {
+        font-size: 20px;
+        padding: 18px 30px;
+        width: 100%;
+        margin-top: 25px;
+        border-radius: 15px;
+        height: auto;
+        min-height: 60px;
+        font-weight: 700;
+        box-shadow: 0 8px 25px rgba(0, 255, 136, 0.4);
+    }
+    
+    .balance-hint {
+        font-size: 18px;
+        text-align: center;
+        margin-top: 15px;
+        line-height: 1.5;
+    }
+    
+    /* التنبيهات */
+    .alert {
+        padding: 25px;
+        font-size: 18px;
+        margin-bottom: 25px;
+        border-radius: 15px;
+        text-align: center;
+        line-height: 1.5;
+    }
+    
+    .alert h4 {
+        font-size: 22px;
+        margin-bottom: 15px;
+        line-height: 1.3;
+    }
+
+    /* شريط المطور */
+    .developer-content {
+        font-size: 16px;
+        line-height: 1.5;
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    .developer-banner {
+        padding: 15px 0;
+    }
+    
+    /* شريط الصلاة */
+    .prayer-banner {
+        font-size: 17px;
+        padding: 15px 0;
+        text-align: center;
+    }
+    
+    .prayer-banner h5 {
+        margin: 0;
+        font-size: 17px;
+        line-height: 1.4;
+    }
+    
+    /* تحسين المسافات */
+    .row {
+        margin: 0;
+    }
+    
+    .col-md-12 {
+        padding: 0;
+    }
+    
+    /* تقليل التأثيرات للموبايل */
+    .balance-card::before,
+    .container::before {
+        opacity: 0.5;
+    }
+    
+    body::before {
+        opacity: 0.4;
+    }
+    
+    body::after {
+        display: none;
+    }
+    
+    /* تسريع الانيميشن للعناصر العادية فقط */
+    .balance-card, .container, .price-comparison {
+        animation-duration: 0.2s !important;
+    }
+
+    /* الحفاظ على سرعة الانيميشن الطبيعية لبانر الصلاة */
+    .prayer-banner h5 {
+        animation-duration: 2s !important;
+    }
+    
+    /* تحسينات إضافية للموبايل الصغير */
+    .price-comparison {
+        padding: 25px 20px;
+        margin: 25px 0;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    }
+    
+    .price-comparison h3 {
+        font-size: 24px;
+        margin-bottom: 25px;
+        text-align: center;
+        line-height: 1.4;
+        padding: 0 10px;
+    }
+    
+    .price-item {
+        padding: 20px 15px;
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border-bottom: 2px solid rgba(0, 255, 136, 0.2);
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.2);
+    }
+    
+    .price-item:last-child {
+        border-bottom: none;
+    }
+    
+    .price-item.highlight {
+        padding: 25px 20px;
+        margin: 20px -20px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        background: rgba(0, 255, 136, 0.1);
+        border: 2px solid rgba(0, 255, 136, 0.3);
+    }
+    
+    .price-label {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: #e0e0e0;
+    }
+    
+    .price-value {
+        font-size: 24px;
+        text-align: center;
+        font-weight: bold;
+        color: #00ff88;
+        text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    }
+    
+    /* التليجرام */
+    .telegram-contact {
+        padding: 25px 20px;
+        margin-top: 25px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    }
+    
+    .contact-header {
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    
+    .contact-header h4 {
+        font-size: 22px;
+        margin-top: 15px;
+        line-height: 1.4;
+        padding: 0 10px;
+    }
+    
+    .contact-header i {
+        font-size: 38px;
+        margin-bottom: 15px;
+        color: #0088cc;
+    }
+    
+    .telegram-btn {
+        font-size: 20px;
+        padding: 18px 30px;
+        border-radius: 25px;
+        margin: 15px 0;
+        width: 100%;
+        font-weight: 700;
+        box-shadow: 0 8px 25px rgba(0, 153, 255, 0.4);
+        text-align: center;
+        display: block;
+    }
+    
+    .contact-note {
+        font-size: 18px;
+        margin-top: 20px;
+        text-align: center;
+        line-height: 1.6;
+        padding: 0 10px;
+    }
+}
+
+/* تحسينات للأجهزة اللوحية والموبايل الكبير */
+@media (max-width: 768px) {
+    body {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+    
+    .container {
+        margin: 15px auto;
+        padding: 25px;
+        max-width: 96%;
+        border-radius: 20px;
+    }
+    
+    .header h1 {
+        font-size: 34px;
+        margin-bottom: 20px;
+        line-height: 1.3;
+    }
+    
+    .header p {
+        font-size: 20px;
+        margin-bottom: 25px;
+        line-height: 1.4;
+    }
+    
+    .balance-card {
+        margin-bottom: 30px;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    }
+    
+    .balance-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+        text-align: center;
+        line-height: 1.4;
+    }
+    
+    .balance-label {
+        font-size: 20px;
+        margin-bottom: 15px;
+        text-align: center;
+        font-weight: 600;
+    }
+    
+    .balance-input {
+        height: 60px;
+        font-size: 22px;
+        padding: 18px 25px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    
+    .balance-button {
+        font-size: 20px;
+        padding: 18px 30px;
+        margin-top: 25px;
+        border-radius: 15px;
+        min-height: 60px;
+        font-weight: 700;
+    }
+    
+    .alert {
+        padding: 25px;
+        font-size: 18px;
+        margin-bottom: 25px;
+        border-radius: 15px;
+        text-align: center;
+    }
+    
+    .alert h4 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    /* تحسين الخلفية للموبايل */
+    body::before {
+        background-size: 150% 150%;
+        opacity: 0.4;
+    }
+    
+    body::after {
+        display: none;
+    }
+}

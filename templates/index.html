@@ -1,0 +1,404 @@
+{% extends "base.html" %}
+
+{% block title %}خلي تجديد الباقة علينا 😉 - اشحن رصيدك بأرخص سعر{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card balance-card">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4 balance-title">اكتب الرصيد اللي عايزه</h2>
+                <form id="balanceForm" method="POST">
+                    <div class="form-group mb-4">
+                        <label for="net_balance" class="form-label balance-label">الرصيد الصافي (بالجنيه):</label>
+                        <input type="number" 
+                               inputmode="numeric" 
+                               pattern="[0-9]*" 
+                               class="form-control balance-input" 
+                               id="net_balance" 
+                               name="net_balance" 
+                               min="20" 
+                               placeholder="أدخل المبلغ (أقل مبلغ 20 جنيه)"
+                               required>
+                        <small class="form-text balance-hint">أقل رصيد ممكن شحنه هو 20 جنيه</small>
+                    </div>
+                    <button type="submit" class="btn w-100 balance-button" id="calculateBtn">
+                        <i class="bi bi-calculator me-2"></i>
+                        احسب السعر
+                    </button>
+                </form>
+                
+                <!-- مكان عرض نتائج الحساب -->
+                <div id="price-comparison-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- معلومات إضافية -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card" style="background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.3);">
+            <div class="card-body text-center">
+                <i class="bi bi-shield-check" style="font-size: 2rem; color: #00ff88;"></i>
+                <h5 class="mt-2" style="color: #00ff88;">آمان وثقة</h5>
+                <p style="color: #e0e0e0;">خدمة موثوقة وآمنة 100%</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card" style="background: rgba(0, 153, 255, 0.1); border: 1px solid rgba(0, 153, 255, 0.3);">
+            <div class="card-body text-center">
+                <i class="bi bi-lightning-charge" style="font-size: 2rem; color: #0099ff;"></i>
+                <h5 class="mt-2" style="color: #0099ff;">سرعة في التنفيذ</h5>
+                <p style="color: #e0e0e0;">شحن فوري خلال دقائق</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- معاملات سابقة -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <div class="card-header" style="background: rgba(0, 255, 136, 0.1); border-bottom: 1px solid rgba(0, 255, 136, 0.3);">
+                <h5 class="mb-0" style="color: #00ff88;">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    معاملات سابقة
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="carousel-container">
+                    <div class="testimonials-carousel">
+
+                    <!-- نسخ مكررة في البداية (آخر 3 صور) -->
+                    <div class="testimonial-slide clone">
+                        <img src="{{ url_for('static', filename='images/4.jpg') }}" alt="معاملة عميل 4" class="testimonial-img">
+                    </div>
+                    <div class="testimonial-slide clone">
+                        <img src="{{ url_for('static', filename='images/5.jpg') }}" alt="معاملة عميل 5" class="testimonial-img">
+                    </div>
+                    <div class="testimonial-slide clone">
+                        <img src="{{ url_for('static', filename='images/6.jpg') }}" alt="معاملة عميل 6" class="testimonial-img">
+                    </div>
+
+                    <!-- الصور الأصلية -->
+                    <div class="testimonial-slide original">
+                        <img src="{{ url_for('static', filename='images/1.jpg') }}" alt="معاملة عميل 1" class="testimonial-img">
+                    </div>
+                    <div class="testimonial-slide original">
+                        <img src="{{ url_for('static', filename='images/2.jpg') }}" alt="معاملة عميل 2" class="testimonial-img">
+                    </div>
+                    <div class="testimonial-slide original">
+                        <img src="{{ url_for('static', filename='images/3.jpg') }}" alt="معاملة عميل 3" class="testimonial-img">
+                    </div>
+                    <div class="testimonial-slide original">
+                        <img src="{{ url_for('static', filename='images/4.jpg') }}" alt="معاملة عميل 4" class="testimonial-img">
+                    </div>
+                    <div class="testimonial-slide original">
+                        <img src="{{ url_for('static', filename='images/5.jpg') }}" alt="معاملة عميل 5" class="testimonial-img">
+                    </div>
+                    <div class="testimonial-slide original">
+                        <img src="{{ url_for('static', filename='images/6.jpg') }}" alt="معاملة عميل 6" class="testimonial-img">
+                    </div>
+
+                    <!-- نسخ مكررة في النهاية (أول 3 صور) -->
+                    <div class="testimonial-slide clone">
+                        <img src="{{ url_for('static', filename='images/1.jpg') }}" alt="معاملة عميل 1" class="testimonial-img">
+                    </div>
+                    <div class="testimonial-slide clone">
+                        <img src="{{ url_for('static', filename='images/2.jpg') }}" alt="معاملة عميل 2" class="testimonial-img">
+                    </div>
+                    <div class="testimonial-slide clone">
+                        <img src="{{ url_for('static', filename='images/3.jpg') }}" alt="معاملة عميل 3" class="testimonial-img">
+                    </div>
+
+                </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* زيادة حجم الزوم إلى 85% */
+body {
+    zoom: 0.85;
+}
+
+/* أنماط إضافية لصفحة الرئيسية */
+.price-comparison {
+    margin-top: 30px;
+    padding: 25px;
+    background: linear-gradient(145deg, #2a2a2a 0%, #1e1e1e 50%, #2a2a2a 100%);
+    border-radius: 20px;
+    border: 2px solid rgba(0, 255, 136, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.price-comparison::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.8), transparent);
+}
+
+.price-comparison h3 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.price-item:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateX(-5px);
+}
+
+.price-item.highlight {
+    background: rgba(0, 255, 136, 0.1);
+    border: 2px solid rgba(0, 255, 136, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.2);
+}
+
+.price-label {
+    font-size: 18px;
+    color: #e0e0e0;
+    font-weight: 600;
+}
+
+.price-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.telegram-contact {
+    margin-top: 25px;
+    padding: 25px;
+    background: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 50%, #1e1e1e 100%);
+    border-radius: 20px;
+    border: 2px solid rgba(0, 153, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.contact-header {
+    margin-bottom: 20px;
+}
+
+.contact-header i {
+    font-size: 3rem;
+    color: #0088cc;
+    margin-bottom: 10px;
+}
+
+.contact-header h4 {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.telegram-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #0088cc 0%, #0066aa 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 136, 204, 0.3);
+    margin: 10px 0;
+}
+
+.telegram-btn:hover {
+    background: linear-gradient(135deg, #0099dd 0%, #0077bb 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 136, 204, 0.5);
+    color: white;
+    text-decoration: none;
+}
+
+.contact-note {
+    color: #b0b0b0;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+/* تحسينات للأكورديون */
+.accordion-button:not(.collapsed) {
+    background: rgba(0, 255, 136, 0.2) !important;
+    color: #ffffff !important;
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 255, 136, 0.25);
+}
+
+/* container للـ carousel */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 400px; /* ارتفاع أقل */
+}
+
+
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+
+    // Carousel تلقائي
+    let currentSlideIndex = 3; // نبدأ من الصورة الرابعة (أول صورة أصلية)
+    let autoSlideInterval;
+
+    function updateIndicators() {
+        // مفيش indicators دلوقتي
+        console.log('Current slide:', currentSlideIndex);
+    }
+
+    function goToSlide(slideIndex) {
+        const carousel = document.querySelector('.testimonials-carousel');
+        const slides = document.querySelectorAll('.testimonial-slide');
+
+        if (!carousel || slides.length === 0) return;
+
+        currentSlideIndex = slideIndex;
+
+        // حساب المسافة بناءً على عرض الصورة + المسافة
+        // للديسكتوب: 300px + 20px = 320px
+        // للموبايل: 250px + 20px = 270px
+        const isMobile = window.innerWidth <= 768;
+        const slideWidth = isMobile ? 270 : 320;
+        const translateX = currentSlideIndex * slideWidth;
+
+        console.log('Moving to slide:', currentSlideIndex, 'TranslateX:', translateX, 'Mobile:', isMobile);
+
+        // استخدام transform للتحريك
+        carousel.style.transition = 'transform 0.5s ease';
+        carousel.style.transform = `translateX(-${translateX}px)`;
+
+        console.log('Transform applied:', `translateX(-${translateX}px)`);
+
+        updateIndicators();
+    }
+
+
+
+    function startAutoSlide() {
+        const carousel = document.querySelector('.testimonials-carousel');
+        const allSlides = document.querySelectorAll('.testimonial-slide');
+        const originalSlides = document.querySelectorAll('.testimonial-slide.original');
+
+        if (!carousel || allSlides.length === 0) {
+            console.log('Auto slide failed - no carousel or slides');
+            return;
+        }
+
+        console.log('Starting infinite auto slide with', allSlides.length, 'total slides,', originalSlides.length, 'original slides');
+
+        autoSlideInterval = setInterval(() => {
+            currentSlideIndex++;
+
+            // لما نوصل لآخر صورة مكررة في النهاية، نرجع للصور المكررة في البداية
+            if (currentSlideIndex >= allSlides.length - 3) {
+                console.log('Reached end clones, jumping to start clones');
+
+                // إيقاف الانيميشن
+                carousel.style.transition = 'none';
+                currentSlideIndex = 3; // نرجع لأول صورة أصلية
+
+                // تطبيق الموضع الجديد فوراً
+                const isMobile = window.innerWidth <= 768;
+                const slideWidth = isMobile ? 270 : 320;
+                const translateX = currentSlideIndex * slideWidth;
+                carousel.style.transform = `translateX(-${translateX}px)`;
+
+                // إعادة تشغيل الانيميشن
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease';
+                }, 50);
+
+                updateIndicators();
+                return;
+            }
+
+            console.log('Auto slide moving to:', currentSlideIndex);
+            goToSlide(currentSlideIndex);
+        }, 3000); // تغيير كل 3 ثواني
+
+        console.log('Auto slide interval started');
+    }
+
+
+
+    // التأكد من تحميل الصفحة
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Auto carousel and modal loaded');
+
+        const carousel = document.querySelector('.testimonials-carousel');
+
+        if (carousel) {
+            // تحديد الموضع الابتدائي (أول صورة أصلية)
+            const isMobile = window.innerWidth <= 768;
+            const slideWidth = isMobile ? 270 : 320;
+            const initialTranslateX = currentSlideIndex * slideWidth;
+            carousel.style.transform = `translateX(-${initialTranslateX}px)`;
+            console.log('Initial position set to slide:', currentSlideIndex);
+
+            // انتظار تحميل الصور ثم بدء التحريك التلقائي
+            setTimeout(() => {
+                startAutoSlide();
+                console.log('Auto carousel started after delay');
+            }, 1000);
+
+
+
+            console.log('Carousel events attached');
+        }
+
+        // مفيش indicators دلوقتي
+
+
+
+        // Debug info
+        console.log('Carousel element:', carousel);
+        console.log('Slides found:', document.querySelectorAll('.testimonial-slide').length);
+    });
+</script>
+{% endblock %}
